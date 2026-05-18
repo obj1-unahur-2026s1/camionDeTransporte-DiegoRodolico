@@ -1,0 +1,39 @@
+import camion2.*
+import cosas2.*
+describe "grupo de test para camion" {
+
+test "camion carga bumblebee como robot" {
+  bumblebee.transformar()
+  camion.cargarCosas(bumblebee)
+  assert.equals(1800, camion.pesoTotal())
+}
+
+test "camion carga bumblebee como robot,150 kilos de arena a granel" {
+  bumblebee.transformar()
+  camion.cargarCosas(bumblebee)
+  arenaAGranel.pesoActual(150)
+  camion.cargarCosas(arenaAGranel)
+  assert.equals(1950, camion.pesoTotal())
+}
+test "camion carga bumblebee como robot,150 kilos de arena a granel, bateria antiaerea con misiles puestos" {
+  bumblebee.transformar()
+  camion.cargarCosas(bumblebee)
+  arenaAGranel.pesoActual(150)
+  camion.cargarCosas(arenaAGranel)
+  bateriaAntiaerea
+  camion.cargarCosas(bateriaAntiaerea)
+  assert.equals(2250, camion.pesoTotal())
+}
+test "camion carga bumblebee como robot,150 kilos de arena a granel, bateria antiaerea con misiles puestos, embalaje de seguridad en un paquete de 80 ladrillos" {
+  bumblebee.transformar()
+  camion.cargarCosas(bumblebee)
+  arenaAGranel.pesoActual(150)
+  camion.cargarCosas(arenaAGranel)
+  bateriaAntiaerea
+  camion.cargarCosas(bateriaAntiaerea)
+  paqueteLadrillos.ladrillos(80)
+  embalajeSeguridad.cambiarCosaQueCubre(paqueteLadrillos)
+  camion.cargarCosas(embalajeSeguridad)
+  assert.equals(2410, camion.pesoTotal())
+}
+}
